@@ -7,8 +7,8 @@ export const restaurant = {
   address: "Király u. 103, 1077 Budapest",
   phone: "(06 1) 397 7710",
   phoneHref: "tel:+3613977710",
-  facebook: "https://m.facebook.com/",
-  mapsReviews: "https://www.google.com/maps",
+  facebook: "https://www.facebook.com/profile.php?id=100040746675717#",
+  mapsReviews: "https://www.google.com/maps/place/Little+Italy+pizz%C3%A9ria+%26+s%C3%B6r%C3%B6z%C5%91/@47.5068585,19.0691229,17z/data=!3m2!4b1!5s0x4741dc7aa72a917d:0x18fb9bb7f7199070!4m6!3m5!1s0x4741dc7aa00f4189:0xab1ee2101269cae4!8m2!3d47.5068549!4d19.0716978!16s%2Fg%2F11cltg21kv?entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D",
   rating: 4.8,
   reviewCount: "1,635",
   priceRange: "2,000–4,000 Ft per person",
@@ -27,26 +27,20 @@ export const navLinks = [
 
 export const menuHighlights = [
   {
-    name: "Calzone",
-    /* IMAGE PLACEHOLDER: Dish photo — Calzone */
-    placeholder: "Dish photo — Calzone",
-    description:
-      "Folded and baked until golden, stuffed with San Marzano tomato, fior di latte and cured ham.",
-    tag: "Guest favourite",
-  },
-  {
     name: "Tiramisu",
     /* IMAGE PLACEHOLDER: Dish photo — Tiramisu */
     placeholder: "Dish photo — Tiramisu",
     description: "Espresso-soaked savoiardi layered with mascarpone cream, dusted with cocoa.",
     tag: "Made in house",
+    src: "/images/tiramisu.jpg"
   },
   {
-    name: "Neapolitan Pizza",
+    name: "Casagrande Pizza",
     /* IMAGE PLACEHOLDER: Dish photo — Pizza */
     placeholder: "Dish photo — Pizza",
     description: "Slow-risen dough, blistered crust, simple honest toppings. A guest favourite.",
     tag: "Guest favourite",
+    src: "/images/Casagrande.jpg"
   },
   {
     name: "Cannoli",
@@ -54,13 +48,7 @@ export const menuHighlights = [
     placeholder: "Dish photo — Cannoli",
     description: "Crisp shells piped to order with sweet ricotta and candied peel.",
     tag: "Guest favourite",
-  },
-  {
-    name: "Craft Beer",
-    /* IMAGE PLACEHOLDER: Drink photo — Craft Beer */
-    placeholder: "Drink photo — Craft Beer",
-    description: "A rotating Hungarian craft selection — the söröző half of our name, taken seriously.",
-    tag: "Guest favourite",
+    src: "/images/cannoli.jpg"
   },
 ];
 
@@ -90,10 +78,8 @@ export const reviews = [
 
 /* IMAGE PLACEHOLDERS: gallery grid — replace one at a time */
 export const gallery = [
-  "Gallery photo — Pizza",
-  "Gallery photo — Calzone",
-  "Gallery photo — Cannoli",
-  "Gallery photo — Tiramisu",
-  "Gallery photo — Craft Beer",
-  "Gallery photo — Interior vibe",
+  {name: "Gallery photo — Pizza", src: "/images/pizza2.jpg"},
+  {name: "Gallery photo — Calzone", src: "/images/calzone.jpg"},
+  {name: "Gallery photo — Cannoli", src: "/images/cannoli2.jpg"},
+  {name: "Gallery photo — Tiramisu", src: "/images/tiramisu2.jpg"},
 ];

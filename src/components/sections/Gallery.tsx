@@ -1,26 +1,57 @@
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Reveal, SectionHeading } from "@/components/Reveal";
 import { gallery } from "@/lib/restaurant";
 
 export function Gallery() {
   return (
-    <section id="gallery" className="bg-secondary/60 bg-paper py-20">
+    <section
+      id="gallery"
+      className="bg-secondary/60 bg-paper py-20"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
+
+        {/* Heading */}
         <Reveal>
           <SectionHeading
             eyebrow="Uno sguardo"
             title="Gallery"
-            subtitle="Photos coming soon — each slot below is a labelled placeholder, ready to swap one at a time."
+            subtitle="A glimpse into our food, atmosphere, and the moments around the table."
           />
         </Reveal>
 
-        {/* IMAGE PLACEHOLDERS: gallery grid — labels come from src/lib/restaurant.ts */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.map((label, i) => (
-            <Reveal key={label} delay={i * 70}>
-              <div className="rounded-2xl border border-border bg-card p-2 shadow-warm transition-all hover:-translate-y-1 hover:shadow-lift">
-                <ImagePlaceholder label={label} className="rounded-xl" />
-              </div>
+        {/* Gallery */}
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {gallery.map((item, i) => (
+            <Reveal
+              key={item.name}
+              delay={i * 70}
+              className="h-full"
+            >
+              <article className="group relative h-full overflow-hidden rounded-2xl border border-border/60 bg-card shadow-warm transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+
+                {/* Image */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <img
+                    src={item.src}
+                    alt={item.name}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+
+                  {/* Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90" />
+
+                  {/* Label */}
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <div className="translate-y-2 transition-transform duration-300 group-hover:translate-y-0">
+                      <h3 className="text-lg font-semibold text-white drop-shadow-sm">
+                        {item.name}
+                      </h3>
+
+                      <div className="mt-1 h-px w-0 bg-white/80 transition-all duration-500 group-hover:w-10" />
+                    </div>
+                  </div>
+
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>

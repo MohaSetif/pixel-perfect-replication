@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Stars } from "@/components/Reveal";
 import { restaurant } from "@/lib/restaurant";
+import coverImage from "../../../public/images/caption.jpg";
 
 export function Hero() {
   return (
@@ -57,11 +58,11 @@ export function Hero() {
 
         {/* IMAGE PLACEHOLDER: Hero image — restaurant interior */}
         <div className="relative">
-          <div className="rounded-3xl border border-border bg-card p-3 shadow-lift">
-            <ImagePlaceholder
-              label="Hero image — restaurant interior"
-              aspect="aspect-[4/3] sm:aspect-[5/4]"
-              className="rounded-2xl"
+          <div className="rounded-3xl border border-border bg-card p-3 shadow-lift bg-cover">
+            <img
+              src={coverImage}
+              alt="Hero image — restaurant interior"
+              className="rounded-2xl h-full w-full object-cover"
             />
           </div>
           <div className="absolute -bottom-5 left-6 rotate-[-3deg] rounded-xl bg-primary px-4 py-2 shadow-lift">

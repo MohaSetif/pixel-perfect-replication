@@ -1,5 +1,7 @@
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Reveal, SectionHeading } from "@/components/Reveal";
+import Pizza from "../../../public/images/pizza.jpg";
+import Dessert from "../../../public/images/dessert.jpg";
 
 export function About() {
   return (
@@ -35,11 +37,10 @@ export function About() {
           <Reveal delay={120}>
             <div className="grid grid-cols-2 gap-4">
               {/* IMAGE PLACEHOLDERS: About section */}
-              <ImagePlaceholder label="About photo — cozy dining room" aspect="aspect-square" />
-              <ImagePlaceholder
-                label="About photo — pizza in the oven"
-                aspect="aspect-square"
-                className="mt-8"
+              <img src={Pizza} className="rounded-2xl h-full w-full object-cover border-4 border-lime-900/50" />
+              <img
+                src={Dessert}
+                className="mt-8 rounded-2xl h-full w-full object-cover border-4 border-lime-900/50"
               />
             </div>
           </Reveal>

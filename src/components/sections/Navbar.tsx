@@ -3,6 +3,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, restaurant } from "@/lib/restaurant";
 import { cn } from "@/lib/utils";
+import logo from "../../../public/images/logo.png"
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -25,18 +26,32 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="#home" className="flex items-center gap-2 leading-tight">
-          <span className="grid size-9 place-items-center rounded-full bg-primary text-lg text-primary-foreground">
-            🍕
-          </span>
-          <span className="flex flex-col">
-            <span className="font-display text-sm font-bold text-foreground sm:text-base">
-              Little Italy
-            </span>
-            <span className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-              Pizzéria &amp; Söröző
-            </span>
-          </span>
+        <a
+          href="#home"
+          aria-label="Little Italy Pizzéria & Söröző"
+          className="relative z-10 flex shrink-0 items-center"
+        >
+          <img
+            src={logo}
+            alt="Little Italy Pizzéria & Söröző"
+            className="
+              h-12
+              w-auto
+              max-w-[50px]
+              object-contain
+              transition-all
+              duration-300
+
+              sm:h-7
+              sm:max-w-[70px]
+
+              md:h-8
+              md:max-w-[90px]
+
+              lg:h-10
+              lg:max-w-[120px]
+            "
+          />
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">

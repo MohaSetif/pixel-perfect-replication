@@ -19,10 +19,7 @@ export function Location() {
               aria-label="Map placeholder — Király u. 103, 1077 Budapest"
               className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-primary/30 bg-accent/60 bg-tablecloth text-center"
             >
-              <MapPin className="size-7 text-primary/70" aria-hidden="true" />
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                Map placeholder — Király u. 103
-              </span>
+              <iframe className="w-full h-full object-cover rounded-2xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.130233069609!2d19.0716978!3d47.5068549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc7aa00f4189%3A0xab1ee2101269cae4!2zTGl0dGxlIEl0YWx5IHBpenrDqXJpYSAmIHPDtnLDtnrFkQ!5e0!3m2!1sen!2shu!4v1788449103665!5m2!1sen!2shu" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </Reveal>
 

@@ -1,4 +1,4 @@
-import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
+import { Facebook, MapPin, Phone } from "lucide-react";
 import { navLinks, restaurant } from "@/lib/restaurant";
 
 export function Footer() {
@@ -45,16 +45,6 @@ export function Footer() {
               className="grid size-10 place-items-center rounded-full bg-cream/10 transition-colors hover:bg-primary"
             >
               <Facebook className="size-4" />
-            </a>
-            {/* Social placeholder — swap href when the account exists */}
-            <a
-              href={restaurant.facebook}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Instagram (placeholder)"
-              className="grid size-10 place-items-center rounded-full bg-cream/10 transition-colors hover:bg-primary"
-            >
-              <Instagram className="size-4" />
             </a>
           </div>
         </div>
