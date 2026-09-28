@@ -6,14 +6,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal, SectionHeading } from "@/components/Reveal";
 import { restaurant } from "@/lib/restaurant";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export function OrderSection() {
   const [sent, setSent] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSent(true);
-    toast.success("Reservation request noted — please call to confirm your table.");
+    toast.success(
+      t.order.disclaimer,
+    );
   };
 
   return (
@@ -21,33 +25,33 @@ export function OrderSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
-            eyebrow="Prenota un tavolo"
-            title="Order or reserve"
-            subtitle="Only 6–7 tables, so booking ahead is a good idea. Fastest of all: just give us a ring."
+            eyebrow={t.order.eyebrow}
+            title={t.order.title}
+            subtitle={t.order.subtitle}
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-          <Reveal>
+        <div className="mt-12 flex justify-center">
+          {/* <Reveal>
             <form
               onSubmit={handleSubmit}
               className="rounded-2xl border border-border bg-card p-6 shadow-warm sm:p-8"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" required placeholder="Your name" className="mt-2" />
+                  <Label htmlFor="name">{t.order.name}</Label>
+                  <Input id="name" name="name" required placeholder={t.order.namePlaceholder} className="mt-2" />
                 </div>
                 <div>
-                  <Label htmlFor="date">Date</Label>
+                  <Label htmlFor="date">{t.order.date}</Label>
                   <Input id="date" name="date" type="date" required className="mt-2" />
                 </div>
                 <div>
-                  <Label htmlFor="time">Time</Label>
+                  <Label htmlFor="time">{t.order.time}</Label>
                   <Input id="time" name="time" type="time" required className="mt-2" />
                 </div>
                 <div>
-                  <Label htmlFor="party">Party size</Label>
+                  <Label htmlFor="party">{t.order.partySize}</Label>
                   <Input
                     id="party"
                     name="party"
@@ -60,50 +64,49 @@ export function OrderSection() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="contact">Phone or email</Label>
+                  <Label htmlFor="contact">{t.order.contact}</Label>
                   <Input
                     id="contact"
                     name="contact"
                     required
-                    placeholder="+36 ..."
+                    placeholder={t.order.contactPlaceholder}
                     className="mt-2"
                   />
                 </div>
               </div>
 
               <Button type="submit" variant="hero" size="xl" className="mt-7 w-full">
-                <Send /> {sent ? "Request sent" : "Send reservation request"}
+                <Send /> {sent ? t.order.sent : t.order.send}
               </Button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                Requests are not confirmed automatically — we will ring you back, or call us
-                directly.
+                {t.order.disclaimer}
               </p>
             </form>
-          </Reveal>
+          </Reveal> */}
 
-          <Reveal delay={120} className="space-y-4">
+          <Reveal delay={120} className="w-full max-w-2xl space-y-4">
             <div className="rounded-2xl border border-border bg-card p-6 shadow-warm">
-              <h3 className="text-xl font-bold text-foreground">Rather talk to us?</h3>
+              <h3 className="text-xl font-bold text-foreground">{t.order.ratherTalk}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Dine-in, takeaway and delivery orders all go through the phone or Facebook.
+                {t.order.ratherTalkDesc}
               </p>
               <div className="mt-5 flex flex-col gap-3">
                 <Button asChild variant="hero" size="xl">
                   <a href={restaurant.phoneHref}>
-                    <Phone /> Call {restaurant.phone}
+                    <Phone /> {t.order.call} {restaurant.phone}
                   </a>
                 </Button>
                 <Button asChild variant="rustic" size="xl">
                   <a href={restaurant.facebook} target="_blank" rel="noreferrer noopener">
-                    <Facebook /> Message on Facebook
+                    <Facebook /> {t.order.messageOnFacebook}
                   </a>
                 </Button>
               </div>
             </div>
             <div className="rounded-2xl border-2 border-primary/40 bg-primary/10 p-6">
-              <p className="text-script text-2xl text-primary">Remember!</p>
+              <p className="text-script text-2xl text-primary">{t.order.remember}</p>
               <p className="mt-1 font-semibold text-foreground">
-                Kitchen closes at 3:00 pm and reopens at 6:00 pm.
+                {t.order.rememberDesc}
               </p>
             </div>
           </Reveal>

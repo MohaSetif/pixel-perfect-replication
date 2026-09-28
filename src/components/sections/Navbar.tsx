@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { navLinks, restaurant } from "@/lib/restaurant";
+import { restaurant } from "@/lib/restaurant";
 import { cn } from "@/lib/utils";
-import logo from "../../../public/images/logo.png"
+import { useLanguage } from "@/hooks/useLanguage";
+import logo from "../../../public/images/logo.png";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { lang, t, toggle } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -15,6 +17,16 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinks = [
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.menu, href: "#menu" },
+    { label: t.nav.reviews, href: "#reviews" },
+    { label: t.nav.gallery, href: "#gallery" },
+    { label: t.nav.location, href: "#location" },
+    { label: t.nav.order, href: "#order" },
+  ];
 
   return (
     <header
@@ -68,9 +80,19 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* Language toggle */}
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={lang === "hu" ? "Switch to English" : "Switch to Hungarian"}
+            className="hidden rounded-full border border-border bg-card px-3 py-1 text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:bg-accent hover:text-primary sm:inline-flex"
+          >
+            {lang === "en" ? "HUN" : "ENG"}
+          </button>
+
           <Button asChild variant="hero" size="default" className="hidden sm:inline-flex">
             <a href={restaurant.phoneHref}>
-              <Phone /> Call to Order
+              <Phone /> {t.nav.callToOrder}
             </a>
           </Button>
           <button
@@ -100,6 +122,16 @@ export function Navbar() {
                 </a>
               </li>
             ))}
+            {/* Language toggle — mobile */}
+            <li className="px-3 pt-2">
+              <button
+                type="button"
+                onClick={toggle}
+                className="w-full rounded-full border border-border bg-card py-2 text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:bg-accent hover:text-primary"
+              >
+                {lang === "en" ? "🇭🇺 Magyar" : "🇬🇧 English"}
+              </button>
+            </li>
             <li className="px-3 pt-2">
               <Button asChild variant="hero" className="w-full">
                 <a href={restaurant.phoneHref}>

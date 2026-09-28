@@ -11,6 +11,7 @@ import { OrderSection } from "@/components/sections/OrderSection";
 import { Footer } from "@/components/sections/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { restaurant } from "@/lib/restaurant";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const title = "Little Italy Pizzéria & Söröző — Neapolitan Pizza in Budapest";
 const description =
@@ -31,6 +32,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -50,7 +53,7 @@ function Index() {
         href={restaurant.phoneHref}
         className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 font-bold text-primary-foreground shadow-lift transition-transform hover:-translate-y-0.5 sm:hidden"
       >
-        <Phone className="size-4" /> Call to Order
+        <Phone className="size-4" /> {t.nav.callToOrder}
       </a>
 
       <Toaster />

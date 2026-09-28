@@ -1,11 +1,13 @@
 import { Phone, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Stars } from "@/components/Reveal";
 import { restaurant } from "@/lib/restaurant";
+import { useLanguage } from "@/hooks/useLanguage";
 import coverImage from "../../../public/images/caption.jpg";
 
 export function Hero() {
+  const { lang, t } = useLanguage();
+
   return (
     <section id="home" className="relative overflow-hidden bg-tablecloth pt-24 pb-16 sm:pt-28">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
@@ -14,24 +16,25 @@ export function Hero() {
             <Stars />
             <span className="text-sm font-bold text-foreground">{restaurant.rating}</span>
             <span className="text-sm text-muted-foreground">
-              from {restaurant.reviewCount} Google reviews
+              {lang === "hu"
+                ? `${restaurant.reviewCount} ${t.hero.googleReviews}`
+                : `${t.hero.reviewsFrom} ${restaurant.reviewCount} ${t.hero.googleReviews}`}
             </span>
           </div>
 
-          <p className="text-script mt-6 text-3xl text-primary">Benvenuti a Budapest</p>
+          <p className="text-script mt-6 text-3xl text-primary">{t.hero.script}</p>
           <h1 className="mt-1 text-4xl font-black leading-[1.05] tracking-tight text-foreground sm:text-6xl">
             Little Italy
             <span className="block text-primary">Pizzéria &amp; Söröző</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground lg:mx-0">
-            {restaurant.tagline}. Wood-fired dough, honest ingredients and a cold craft beer in a
-            tiny, family-run trattoria on Király utca.
+            {t.hero.taglineSuffix}
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
             <Button asChild variant="hero" size="xl">
               <a href="#order">
-                <Utensils /> Order / Reserve
+                <Utensils /> {t.hero.orderReserve}
               </a>
             </Button>
             <Button asChild variant="rustic" size="xl">
@@ -47,7 +50,7 @@ export function Hero() {
                 key={s}
                 className="rounded-full bg-basil px-3 py-1 text-xs font-bold uppercase tracking-wider text-basil-foreground"
               >
-                {s}
+                {t.hero.services[s as keyof typeof t.hero.services] ?? s}
               </li>
             ))}
             <li className="rounded-full bg-card px-3 py-1 text-xs font-bold uppercase tracking-wider text-foreground shadow-warm">
@@ -67,7 +70,7 @@ export function Hero() {
           </div>
           <div className="absolute -bottom-5 left-6 rotate-[-3deg] rounded-xl bg-primary px-4 py-2 shadow-lift">
             <span className="text-script text-xl text-primary-foreground">
-              Closed 3pm–6pm · see hours
+              {t.hero.closedNote}
             </span>
           </div>
         </div>

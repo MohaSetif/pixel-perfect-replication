@@ -1,13 +1,26 @@
 import { Facebook, MapPin, Phone } from "lucide-react";
-import { navLinks, restaurant } from "@/lib/restaurant";
+import { restaurant } from "@/lib/restaurant";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export function Footer() {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.menu, href: "#menu" },
+    { label: t.nav.reviews, href: "#reviews" },
+    { label: t.nav.gallery, href: "#gallery" },
+    { label: t.nav.location, href: "#location" },
+    { label: t.nav.order, href: "#order" },
+  ];
+
   return (
     <footer className="border-t-4 border-primary bg-espresso py-14 text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-3">
         <div>
           <h2 className="font-display text-2xl font-bold">{restaurant.name}</h2>
-          <p className="text-script mt-1 text-xl text-gold">Pizza, birra, famiglia.</p>
+          <p className="text-script mt-1 text-xl text-gold">{t.footer.script}</p>
           <p className="mt-4 text-sm opacity-80">{restaurant.priceRange}</p>
         </div>
 
@@ -21,9 +34,7 @@ export function Footer() {
               {restaurant.phone}
             </a>
           </p>
-          <p className="opacity-80">
-            Daytime service until 3:00 pm · evening service from 6:00 pm
-          </p>
+          <p className="opacity-80">{t.footer.hours}</p>
         </div>
 
         <div>
